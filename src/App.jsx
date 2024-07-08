@@ -1,16 +1,23 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import ProductPage from './pages/ProductPage';
-import NotFoundPage from './pages/NotFoundPage';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Box } from '@mui/material';
+import Sidebar from './components/Sidebar';
+import Dashboard from './pages/Dashboard';
+import Viabilidade from './pages/Viabilidade';
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/product/:id" element={<ProductPage />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+    <Router>
+      <Box sx={{ display: 'flex' }}>
+        <Sidebar />
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <Routes>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/viabilidade" element={<Viabilidade />} />
+          </Routes>
+        </Box>
+      </Box>
+    </Router>
   );
 };
 
